@@ -1,7 +1,3 @@
-// blueprintV — version.js
-// Fetches version.json and updates the hero badge text.
-// To update the badge for a new release, just edit version.json.
-
 (function () {
   'use strict';
 
