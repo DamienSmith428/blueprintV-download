@@ -662,9 +662,6 @@ code {
 .dl-feature:nth-child(even) { border-right: none; }
 .dl-feature:nth-last-child(-n+2) { border-bottom: none; }
 
-/* Centre the bottom-row pair */
-.dl-feature--center { justify-content: center; }
-
 .dl-feature-icon {
   color: var(--accent);
   font-size: 16px;
