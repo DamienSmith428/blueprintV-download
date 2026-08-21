@@ -1,79 +1,106 @@
-# blueprintV Frontend
+# blueprintV — Frontend
 
-Public GitHub Pages frontend for the blueprintV tool by DS Customs.
+> **FiveM Livery Template Generator** · Made by [DS Customs](https://ds-customs.tebex.io)
 
-Pairs with the **blueprintV API** ([`blueprintV-hosted-source/server`](https://github.com/YOUR_ORG/blueprintV-hosted-source)) running on Render.
-
----
-
-## What this is
-
-A static website hosted on **GitHub Pages** that provides a browser-based UI for blueprintV — the FiveM Livery Template Generator. Users can:
-
-- Upload their FiveM resource `.zip` file
-- Configure template size and livery slot count
-- Download generated template PNGs and patched `carcols.meta` / `carvariations.meta` files
+This repository is the static **GitHub Pages** website for [blueprintV](https://github.com/DamienSmith428/blueprintV-frontend) — a free Windows desktop app that automates UV-shell extraction and livery template generation for FiveM vehicle resources.
 
 ---
 
-## Setup
+## What Is blueprintV?
 
-### 1. Set your API URL
+blueprintV is a **Windows desktop application** for FiveM vehicle creators. Drop your resource folder in and it:
 
-Open [`js/app.js`](js/app.js) and update line 9:
+- Reads every `.yft` model in the resource
+- Extracts real UV shells and renders them as wire-frame overlay **template PNGs** (up to 4096 × 4096)
+- Automatically patches `carcols.meta` and `carvariations.meta` with correct livery slot entries
+- Backs up original meta files before making any changes
 
-```js
-const API_BASE = window.BLUEPRINTV_API || 'https://YOUR-RENDER-SERVICE.onrender.com';
-```
-
-Replace `YOUR-RENDER-SERVICE` with your actual Render web service subdomain.
-
-### 2. Add assets
-
-Copy your `blueprintV.png` logo and `blueprintV.ico` icon into the `assets/` folder:
-
-```
-assets/
-  blueprintV.png
-  blueprintV.ico
-```
-
-### 3. Enable GitHub Pages
-
-1. Push this repo to GitHub.
-2. Go to **Settings → Pages**.
-3. Set **Source** to `Deploy from a branch` → `main` → `/ (root)`.
-4. Save. Your site will be live at `https://<username>.github.io/<repo-name>/`.
-
-### 4. Update CORS on the backend
-
-In your Render environment variables, set:
-
-```
-FRONTEND_ORIGIN=https://<username>.github.io
-```
+No subscriptions. No backend. Completely free to use.
 
 ---
 
-## File structure
+## What This Repo Is
+
+This repo hosts the **landing page** for blueprintV — a static site served via GitHub Pages. It is not the app itself. It provides:
+
+- A download link to the latest `blueprintV.exe` release
+- A "How It Works" walkthrough
+- Discord community link
+- Version badge powered by [`version.json`](version.json)
+
+---
+
+## File Structure
 
 ```
 blueprintV-frontend/
-├── index.html          ← main page
+├── index.html          ← main landing page
+├── version.json        ← controls the hero version badge (edit to update)
 ├── css/
-│   └── style.css       ← blueprint dark theme
+│   └── style.css       ← sci-fi dark theme (Orbitron + Exo 2)
 ├── js/
-│   └── app.js          ← upload + API integration logic
-├── assets/
-│   ├── blueprintV.png  ← logo (add manually)
-│   └── blueprintV.ico  ← favicon (add manually)
-└── README.md
+│   ├── particles.js    ← animated particle canvas background
+│   └── version.js      ← fetches version.json and updates the hero badge
+└── assets/
+    ├── blueprintV.png  ← logo
+    └── blueprintV.ico  ← favicon
 ```
 
 ---
 
-## Tech
+## Tech Stack
 
-- Pure HTML + CSS + vanilla JS — no build step, no dependencies
-- Deploys to GitHub Pages as-is
-- Communicates with the Node.js/Express backend on Render via `fetch()`
+- Pure HTML + CSS + vanilla JS — **no build step, no dependencies**
+- Fonts: [Orbitron](https://fonts.google.com/specimen/Orbitron) + [Exo 2](https://fonts.google.com/specimen/Exo+2) via Google Fonts
+- Deployed to GitHub Pages straight from the `main` branch root
+
+---
+
+## Updating the Version Badge
+
+The hero badge on the landing page is driven entirely by [`version.json`](version.json):
+
+```json
+{
+  "version": "v1.0.0",
+  "label": "Initial Release"
+}
+```
+
+Update those two fields and push — the badge updates automatically on next page load (no rebuild required).
+
+---
+
+## GitHub Pages Setup
+
+1. Push this repo to GitHub.
+2. Go to **Settings → Pages**.
+3. Set **Source** → `Deploy from a branch` → `main` → `/ (root)`.
+4. Save. The site goes live at `https://<username>.github.io/<repo-name>/`.
+
+---
+
+## Desktop App Requirements
+
+| Requirement | Detail |
+|---|---|
+| OS | Windows 10 (1903+) or Windows 11 |
+| Runtime | .NET Framework 4.8 (built into Windows 10 1903+ and Windows 11) |
+| Install | None — single portable `.exe` |
+
+---
+
+## Links
+
+| | |
+|---|---|
+| 🔗 Live Site | [damiensmith428.github.io/blueprintV-frontend](https://damiensmith428.github.io/blueprintV-frontend) |
+| 💬 Discord | [discord.gg/HfaZHm5qJQ](https://discord.gg/HfaZHm5qJQ) |
+| 🛒 DS Customs Store | [ds-customs.tebex.io](https://ds-customs.tebex.io) |
+| 📦 Latest Release | [Releases](https://github.com/DamienSmith428/blueprintV-frontend/releases/latest) |
+
+---
+
+## License
+
+blueprintV is free to use. Redistribution or resale of the application is not permitted without explicit permission from DS Customs.
