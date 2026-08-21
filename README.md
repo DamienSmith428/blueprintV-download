@@ -7,7 +7,7 @@ This repository is the static **GitHub Pages** website for [blueprintV](https://
 ---
 
 ## What Is blueprintV?
-
+ 
 blueprintV is a **Windows desktop application** for FiveM vehicle creators. Drop your resource folder in and it:
 
 - Reads every `.yft` model in the resource
