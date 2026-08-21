@@ -32,6 +32,7 @@
   const liverySlotsEl  = document.getElementById('liverySlots');
   const patchCarcolsEl = document.getElementById('patchCarcols');
   const patchCarvarEl  = document.getElementById('patchCarvar');
+  const backupMetaEl   = document.getElementById('backupMeta');
 
   let selectedFile = null;
 
@@ -96,6 +97,7 @@
     formData.append('liverySlots',  liverySlotsEl.value);
     formData.append('patchCarcols', patchCarcolsEl.checked ? 'true' : 'false');
     formData.append('patchCarvar',  patchCarvarEl.checked  ? 'true' : 'false');
+    formData.append('backupMeta',   backupMetaEl.checked   ? 'true' : 'false');
 
     try {
       setProgress(null, 'Processing resource…');
