@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>blueprintV — FiveM Livery Template Generator</title>
+  <link rel="icon" href="assets/blueprintV.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="assets/blueprintV.png" alt="blueprintV logo" class="brand-logo" />
+        <div class="brand-text">
+          <span class="brand-name">blueprint<span class="brand-v">V</span></span>
+          <span class="brand-tagline">FiveM Livery Template Generator</span>
+        </div>
+      </div>
+      <nav class="header-nav">
+        <a href="#tool"     class="nav-link">Tool</a>
+        <a href="#how"      class="nav-link">How It Works</a>
+        <a href="#download" class="nav-link">Desktop App</a>
+        <a href="https://discord.gg/HfaZHm5qJQ" target="_blank" rel="noopener" class="nav-link nav-discord">Discord</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── Hero ───────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-title">Generate livery templates<br>directly from your browser.</h1>
+      <p class="hero-sub">Upload your FiveM resource zip. blueprintV scans your <code>.yft</code> models, generates a blueprint-style UV template, and patches <code>carcols.meta</code> / <code>carvariations.meta</code> — all in seconds.</p>
+      <a href="#tool" class="btn btn-primary">Start generating →</a>
+    </div>
+  </section>
+
+  <!-- ── Tool ───────────────────────────────────────────────────────────── -->
+  <section class="section" id="tool">
+    <div class="container">
+      <h2 class="section-title">Upload your resource</h2>
+
+      <!-- Drop zone -->
+      <div class="dropzone" id="dropzone">
+        <div class="dropzone-icon">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 4L24 32M24 4L14 14M24 4L34 14" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6 34V42H42V34" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p class="dropzone-label">Drag &amp; drop your <strong>.zip</strong> resource here</p>
+        <p class="dropzone-sub">or</p>
+        <label class="btn btn-secondary" for="fileInput">Browse file</label>
+        <input type="file" id="fileInput" accept=".zip" hidden />
+        <p class="dropzone-hint">Max 100 MB · FiveM resource must contain <code>fxmanifest.lua</code></p>
+      </div>
+
+      <!-- Options -->
+      <div class="options-panel" id="optionsPanel">
+        <h3 class="options-title">Options</h3>
+        <div class="options-grid">
+          <div class="option-group">
+            <label class="option-label" for="templateSize">Template size</label>
+            <select class="option-select" id="templateSize">
+              <option value="512">512 × 512</option>
+              <option value="1024">1024 × 1024</option>
+              <option value="2048" selected>2048 × 2048 (recommended)</option>
+              <option value="4096">4096 × 4096</option>
+            </select>
+          </div>
+          <div class="option-group">
+            <label class="option-label" for="liverySlots">Livery slots</label>
+            <input class="option-input" type="number" id="liverySlots" min="1" max="32" value="5" />
+          </div>
+          <div class="option-group option-group--check">
+            <label class="option-check">
+              <input type="checkbox" id="patchCarcols" checked />
+              <span>Patch carcols.meta</span>
+            </label>
+          </div>
+          <div class="option-group option-group--check">
+            <label class="option-check">
+              <input type="checkbox" id="patchCarvar" checked />
+              <span>Patch carvariations.meta</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- File info + generate button -->
+      <div class="file-info" id="fileInfo" hidden>
+        <div class="file-info-row">
+          <span class="file-info-icon">📦</span>
+          <span class="file-info-name" id="fileName">—</span>
+          <span class="file-info-size" id="fileSize">—</span>
+          <button class="file-clear" id="fileClear" title="Remove file">✕</button>
+        </div>
+        <button class="btn btn-primary btn-generate" id="btnGenerate">Generate templates →</button>
+      </div>
+
+      <!-- Progress -->
+      <div class="progress-wrap" id="progressWrap" hidden>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressFill"></div>
+        </div>
+        <p class="progress-label" id="progressLabel">Uploading…</p>
+      </div>
+
+      <!-- Results -->
+      <div class="results" id="results" hidden>
+        <div class="results-header">
+          <h3 class="results-title" id="resultsTitle">Results</h3>
+          <a class="btn btn-primary" id="btnDownload" href="#" download>⬇ Download all outputs</a>
+        </div>
+        <div class="results-list" id="resultsList"></div>
+        <div class="results-note">
+          <p>⚠ Output files expire after <strong>5 minutes</strong>. Download them now.</p>
+          <p>The template PNG is a branded placeholder — UV shell rendering requires the <a href="#download">desktop app</a>.</p>
+        </div>
+      </div>
+
+      <!-- Error banner -->
+      <div class="error-banner" id="errorBanner" hidden>
+        <span class="error-icon">✖</span>
+        <span class="error-msg" id="errorMsg"></span>
+        <button class="error-close" id="errorClose">✕</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How it works ────────────────────────────────────────────────────── -->
+  <section class="section section--alt" id="how">
+    <div class="container">
+      <h2 class="section-title">How it works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div class="step-body">
+            <h3>Zip your resource</h3>
+            <p>Compress your entire FiveM resource folder (the one containing <code>fxmanifest.lua</code>) into a <code>.zip</code> file. Include your <code>stream/</code> folder with the <code>.yft</code> models.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div class="step-body">
+            <h3>Upload &amp; configure</h3>
+            <p>Drop the zip onto the tool above, pick your template resolution and number of livery slots, then click <strong>Generate</strong>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div class="step-body">
+            <h3>Download outputs</h3>
+            <p>blueprintV scans all <code>.yft</code> models in your resource, generates a template PNG per vehicle, and produces ready-to-use <code>carcols.meta</code> and <code>carvariations.meta</code> files. Download the zip and drop the files into your resource.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div class="step-body">
+            <h3>Paint your livery</h3>
+            <p>Open the template PNG in Photoshop or your paint tool of choice. The UV shells show exactly where each part of the vehicle lives on the texture. Name your textures <code>{model}_livery_0</code>, <code>_livery_1</code>, etc.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Desktop download ────────────────────────────────────────────────── -->
+  <section class="section" id="download">
+    <div class="container">
+      <h2 class="section-title">Desktop app</h2>
+      <div class="download-card">
+        <div class="download-card-body">
+          <img src="assets/blueprintV.png" alt="blueprintV" class="download-logo" />
+          <div>
+            <h3>blueprintV for Windows</h3>
+            <p>The full desktop app includes <strong>real UV shell extraction</strong> — reads your <code>.yft</code> files using CodeWalker.Core and renders every UV triangle as a wire-frame overlay on the template PNG. Supports drag-and-drop, carcols conflict resolution dialogs, and backup options.</p>
+            <p class="download-req">Requires Windows · .NET Framework 4.8 (included in Windows 10 1903+ and Windows 11)</p>
+            <a class="btn btn-primary" id="btnRelease" href="https://github.com/DS-Customs/blueprintV/releases/latest" target="_blank" rel="noopener">Download latest release</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>blueprintV by <a href="https://discord.gg/HfaZHm5qJQ" target="_blank" rel="noopener">DS Customs</a></span>
+      <span class="footer-sep">·</span>
+      <a href="https://discord.gg/HfaZHm5qJQ" target="_blank" rel="noopener">discord.gg/HfaZHm5qJQ</a>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
