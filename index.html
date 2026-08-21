@@ -84,29 +84,29 @@
         <div class="step">
           <div class="step-num">01</div>
           <div class="step-body">
-            <h3>Zip your resource</h3>
-            <p>Compress your entire FiveM resource folder (the one containing <code>fxmanifest.lua</code>) into a <code>.zip</code> file. Include your <code>stream/</code> folder with the <code>.yft</code> models.</p>
+            <h3>Download &amp; Launch</h3>
+            <p>Download <code>blueprintV.exe</code> and run it — no installation required. Requires Windows and .NET Framework 4.8, which is built into Windows 10 v1903+ and Windows 11.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">02</div>
           <div class="step-body">
-            <h3>Upload &amp; configure</h3>
-            <p>Drop the zip onto the tool above, pick your template resolution and number of livery slots, then click <strong>Generate</strong>.</p>
+            <h3>Point it at your resource</h3>
+            <p>Use the drag-and-drop interface or the folder browser to select your FiveM vehicle resource. blueprintV will locate all <code>.yft</code> model files automatically.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">03</div>
           <div class="step-body">
-            <h3>Download outputs</h3>
-            <p>blueprintV scans all <code>.yft</code> models in your resource, generates a template PNG per vehicle, and produces ready-to-use <code>carcols.meta</code> and <code>carvariations.meta</code> files. Drop them straight into your resource.</p>
+            <h3>Generate your templates</h3>
+            <p>blueprintV reads every <code>.yft</code> model using CodeWalker.Core, extracts the real UV shells, and renders each one as a wire-frame overlay on a template PNG — one per vehicle, at up to 4096 × 4096.</p>
           </div>
         </div>
         <div class="step">
           <div class="step-num">04</div>
           <div class="step-body">
-            <h3>Paint your livery</h3>
-            <p>Open the template PNG in Photoshop or your paint tool of choice. UV shells show exactly where each vehicle part lives on the texture. Name your textures <code>{model}_livery_0</code>, <code>_livery_1</code>, etc.</p>
+            <h3>Auto-patch your meta files</h3>
+            <p>blueprintV automatically patches <code>carcols.meta</code> and <code>carvariations.meta</code> with the correct livery slot entries and backs up the originals. Drop your painted textures in and you're done.</p>
           </div>
         </div>
       </div>
