@@ -1,6 +1,3 @@
-// blueprintV — particles.js
-// Floating circuit-node particles for the sci-fi background effect.
-
 (function () {
   'use strict';
 
@@ -122,7 +119,6 @@
     resize();
     initParticles();
   });
-
   resize();
   initParticles();
   tick();
