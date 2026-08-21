@@ -2,7 +2,7 @@
 
 > **FiveM Livery Template Generator** · Made by [DS Customs](https://ds-customs.tebex.io)
 
-This repository is the static **GitHub Pages** website for [blueprintV](https://github.com/DamienSmith428/blueprintV-frontend) — a free Windows desktop app that automates UV-shell extraction and livery template generation for FiveM vehicle resources.
+This repository is the static **GitHub Pages** website for [blueprintV](https://github.com/DamienSmith428/blueprintV-download) — a free Windows desktop app that automates UV-shell extraction and livery template generation for FiveM vehicle resources.
 
 ---
 
