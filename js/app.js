@@ -7,7 +7,7 @@
   // ── Config — UPDATE THIS after deploying your Render service ──────────────
   // Replace the URL below with your actual Render web service URL.
   // Example: 'https://blueprintv-api.onrender.com'
-  const API_BASE = window.BLUEPRINTV_API || 'https://blueprintv-api.onrender.com';
+  const API_BASE = window.BLUEPRINTV_API || 'https://blueprintv-hosted-source.onrender.com';
 
   // ── DOM refs ──────────────────────────────────────────────────────────────
   const dropzone      = document.getElementById('dropzone');
