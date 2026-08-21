@@ -19,25 +19,6 @@ No subscriptions. No backend. Completely free to use.
 
 ---
 
-## What This Repo Is
-
-This repo hosts the **landing page** for blueprintV — a static site served via GitHub Pages. It is not the app itself. It provides:
-
-- A download link to the latest `blueprintV.exe` release
-- A "How It Works" walkthrough
-- Discord community link
-- Version badge powered by [`version.json`](version.json)
-
-
----
-
-## Tech Stack
-
-- Pure HTML + CSS + vanilla JS — **no build step, no dependencies**
-- Fonts: [Orbitron](https://fonts.google.com/specimen/Orbitron) + [Exo 2](https://fonts.google.com/specimen/Exo+2) via Google Fonts
-- Deployed to GitHub Pages straight from the `main` branch root
-
-
 ## Desktop App Requirements
 
 | Requirement | Detail |
