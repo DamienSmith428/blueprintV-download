@@ -49,7 +49,7 @@
         <div class="hero-logo-ring" aria-hidden="true"></div>
         <img src="assets/blueprintV.png" alt="blueprintV" class="hero-logo" />
       </div>
-      <div class="hero-badge">v1.0.0 — Initial Release</div>
+      <div class="hero-badge" id="heroBadge">v1.0.0 — Initial Release</div>
       <h1 class="hero-title">
         <span class="hero-title-top">blueprint</span><span class="hero-title-v">V</span>
       </h1>
@@ -99,7 +99,7 @@
           <div class="step-num">03</div>
           <div class="step-body">
             <h3>Generate your templates</h3>
-            <p>blueprintV reads every <code>.yft</code> model using CodeWalker.Core, extracts the real UV shells, and renders each one as a wire-frame overlay on a template PNG — one per vehicle, at up to 4096 × 4096.</p>
+            <p>blueprintV reads every <code>.yft</code> model, extracts the real UV shells, and renders each one as a wire-frame overlay on a template PNG — one per vehicle, at up to 4096 × 4096.</p>
           </div>
         </div>
         <div class="step">
@@ -126,7 +126,7 @@
           <div class="download-info">
             <div class="download-badge">Windows · .NET 4.8</div>
             <h3>blueprintV for Windows</h3>
-            <p>The full desktop app includes <strong>real UV shell extraction</strong> — reads your <code>.yft</code> files using CodeWalker.Core and renders every UV triangle as a wire-frame overlay on the template PNG. Supports drag-and-drop, carcols conflict resolution dialogs, and backup options.</p>
+            <p>The full desktop app includes <strong>real UV shell extraction</strong> — reads your <code>.yft</code> files and renders every UV triangle as a wire-frame overlay on the template PNG. Supports drag-and-drop, carcols conflict resolution dialogs, and backup options.</p>
             <p class="download-req">Requires Windows · .NET Framework 4.8 (included in Windows 10 1903+ and Windows 11)</p>
             <div class="download-actions">
               <a class="btn btn-primary btn-download" id="btnRelease" href="https://github.com/DamienSmith428/blueprintV-frontend/releases/latest/download/blueprintV.exe" target="_blank" rel="noopener">
@@ -157,10 +157,6 @@
           <div class="dl-feature">
             <span class="dl-feature-icon">⬡</span>
             <span>4096 × 4096 template support</span>
-          </div>
-          <div class="dl-feature">
-            <span class="dl-feature-icon">⬡</span>
-            <span>CodeWalker.Core integration</span>
           </div>
         </div>
       </div>
@@ -205,5 +201,6 @@
   </footer>
 
   <script src="js/particles.js"></script>
+  <script src="js/version.js"></script>
 </body>
 </html>
