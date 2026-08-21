@@ -642,7 +642,7 @@ code {
 /* Features grid */
 .download-features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 0;
   padding: 0;
 }
@@ -661,6 +661,9 @@ code {
 .dl-feature:hover { background: var(--accent-dim); }
 .dl-feature:nth-child(even) { border-right: none; }
 .dl-feature:nth-last-child(-n+2) { border-bottom: none; }
+
+/* Centre the bottom-row pair */
+.dl-feature--center { justify-content: center; }
 
 .dl-feature-icon {
   color: var(--accent);
