@@ -106,7 +106,6 @@
     animId = requestAnimationFrame(tick);
   }
 
-  // Pause when tab is hidden (battery / performance)
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
       cancelAnimationFrame(animId);
